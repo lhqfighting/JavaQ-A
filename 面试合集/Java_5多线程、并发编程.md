@@ -281,7 +281,7 @@ public class MyThread extends Thread {
     }
 
 }
-12345678
+
 public class TheadTest {
 
     public static void main(String[] args) {
@@ -292,7 +292,7 @@ public class TheadTest {
 
 }
 
-12345678910
+
 ```
 
 运行结果
