@@ -408,7 +408,7 @@ public class MyRunnable implements Runnable {
     }
 
 }
-12345678
+
 public class SingleThreadExecutorTest {
 
     public static void main(String[] args) {
@@ -423,7 +423,6 @@ public class SingleThreadExecutorTest {
     }
 
 }
-1234567891011121314
 ```
 
 执行结果
@@ -555,9 +554,7 @@ Java虚拟机采用抢占式调度模型，是指优先让可运行池中优先�
 - 用途不同：Wait 通常被用于线程间交互/通信，sleep 通常被用于暂停执行。
 - 用法不同：wait() 方法被调用后，线程不会自动苏醒，需要别的线程调用同一个对象上的 notify() 或者 notifyAll() 方法。sleep() 方法执行完成后，线程会自动苏醒。或者可以使用wait(long timeout)超时后线程会自动苏醒。
 
-#### 你是如何调用 wait() 方法的？使用 if 块还是循环？为什么？
-
-处于等待状态的线程可能会收到错误警报和伪唤醒，如果不在循环中检查等待条件，程序就会在没有满足结束条件的情况下退出。
+#### 为什么使用循环调用 wait() 方法
 
 wait() 方法应该在循环调用，因为当线程获取到 CPU 开始执行的时候，其他条件可能还没有满足，所以在处理前，循环检测条件是否满足会更好。下面是一段标准的使用 wait 和 notify 方法的代码：
 
@@ -570,7 +567,6 @@ synchronized (monitor) {
     }
     //  处理其他的业务逻辑
 }
-12345678
 ```
 
 #### 为什么线程通信的方法 wait(), notify()和 notifyAll()被定义在 Object 类里？
@@ -701,8 +697,6 @@ Java中线程通信协作的最常见的两种方式：
 另外 java 还提供了显式监视器( Lock )和隐式监视器( synchronized )两种锁方案
 
 #### 如果你提交任务时，线程池队列已满，这时会发生什么
-
-这里区分一下：
 
 （1）如果使用的是无界队列 LinkedBlockingQueue，也就是无界队列的话，没关系，继续添加任务到阻塞队列中等待执行，因为 LinkedBlockingQueue 可以近乎认为是一个无穷大的队列，可以无限存放任务
 
@@ -898,7 +892,6 @@ public class SynchronizedDemo {
         }
     }
 }
-1234567
 ```
 
 通过JDK 反汇编指令 javap -c -v SynchronizedDemo
